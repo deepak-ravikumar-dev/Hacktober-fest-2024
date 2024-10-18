@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Chart Roadmap</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Personalized Diet Chart Roadmap</h1>
+        <p class="text-center">Get a personalized roadmap to follow your diet plan effectively!</p>
+
+        <form id="diet-roadmap-form">
+            <div class="form-group">
+                <label for="dietGoal">What is your main goal for following a diet?</label>
+                <select class="form-control" id="dietGoal" required>
+                    <option value="" disabled selected>Select your goal</option>
+                    <option value="weight_loss">Weight Loss</option>
+                    <option value="weight_gain">Weight Gain</option>
+                    <option value="muscle_building">Muscle Building</option>
+                    <option value="maintain_health">Maintain General Health</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dietType">What type of diet do you prefer?</label>
+                <select class="form-control" id="dietType" required>
+                    <option value="" disabled selected>Select your diet type</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="keto">Keto</option>
+                    <option value="low_carb">Low Carb</option>
+                    <option value="balanced">Balanced</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="activityLevel">What is your current activity level?</label>
+                <select class="form-control" id="activityLevel" required>
+                    <option value="" disabled selected>Select your activity level</option>
+                    <option value="sedentary">Sedentary (little or no exercise)</option>
+                    <option value="moderate">Moderate (exercise 3-4 times a week)</option>
+                    <option value="active">Active (exercise daily)</option>
+                    <option value="very_active">Very Active (intense exercise daily)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block">Get Diet Roadmap</button>
+        </form>
+
+        <div id="roadmapResult" class="mt-4" style="display: none;">
+            <h3>Your Diet Chart Roadmap</h3>
+            <p id="roadmapContent"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('diet-roadmap-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get user inputs
+            const dietGoal = document.getElementById('dietGoal').value;
+            const dietType = document.getElementById('dietType').value;
+            const activityLevel = document.getElementById('activityLevel').value;
+
+            // Simulate a response (Replace this logic with the backend call)
+            let roadmap = "Here's a suggested diet roadmap based on your preferences: \n\n";
+
+            if (dietGoal === 'weight_loss') {
+                roadmap += "1. Focus on a calorie deficit diet.\n";
+                roadmap += "2. Increase protein intake to maintain muscle mass.\n";
+                roadmap += "3. Avoid sugary and processed foods.\n";
+            } else if (dietGoal === 'weight_gain') {
+                roadmap += "1. Eat more frequently and include high-calorie foods.\n";
+                roadmap += "2. Add healthy fats and protein-rich foods to your diet.\n";
+                roadmap += "3. Avoid junk food and focus on whole foods.\n";
+            } else if (dietGoal === 'muscle_building') {
+                roadmap += "1. Increase protein intake to aid muscle growth.\n";
+                roadmap += "2. Include complex carbohydrates for sustained energy.\n";
+                roadmap += "3. Eat a balanced diet with a slight calorie surplus.\n";
+            } else if (dietGoal === 'maintain_health') {
+                roadmap += "1. Eat a balanced diet with a variety of foods.\n";
+                roadmap += "2. Stay hydrated and limit processed foods.\n";
+                roadmap += "3. Include plenty of fruits and vegetables in your meals.\n";
+            }
+
+            if (dietType === 'vegetarian') {
+                roadmap += "\nAs a Vegetarian, focus on plant-based proteins like beans, lentils, and tofu.\n";
+            } else if (dietType === 'vegan') {
+                roadmap += "\nAs a Vegan, ensure you're getting enough B12, iron, and protein from sources like legumes and fortified foods.\n";
+            } else if (dietType === 'keto') {
+                roadmap += "\nOn a Keto diet, prioritize high fats, moderate proteins, and very low carbs.\n";
+            } else if (dietType === 'low_carb') {
+                roadmap += "\nFor a Low Carb diet, focus on proteins and healthy fats while limiting carbohydrates.\n";
+            } else if (dietType === 'balanced') {
+                roadmap += "\nWith a Balanced diet, aim to include a mix of proteins, carbs, and fats in each meal.\n";
+            }
+
+            if (activityLevel === 'sedentary') {
+                roadmap += "\nSince you're Sedentary, try to include light exercises like walking or yoga.\n";
+            } else if (activityLevel === 'moderate') {
+                roadmap += "\nWith a Moderate activity level, focus on a mix of cardio and strength training.\n";
+            } else if (activityLevel === 'active') {
+                roadmap += "\nFor an Active lifestyle, maintain a diet rich in proteins and complex carbs for energy.\n";
+            } else if (activityLevel === 'very_active') {
+                roadmap += "\nAs you're Very Active, ensure you're getting enough calories to fuel your workouts.\n";
+            }
+
+            // Display the roadmap result
+            document.getElementById('roadmapContent').innerText = roadmap;
+            document.getElementById('roadmapResult').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
